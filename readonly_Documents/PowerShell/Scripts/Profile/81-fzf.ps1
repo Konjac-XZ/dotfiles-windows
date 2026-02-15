@@ -21,7 +21,5 @@ $env:FZF_DEFAULT_OPTS = @"
 "@
 
 if (Get-Command Set-PsFzfOption -ErrorAction SilentlyContinue) {
-	$commandOverride = [ScriptBlock]{ param($Location) Write-Host $Location }
 	Set-PsFzfOption -PSReadlineChordProvider "Ctrl+t" -PSReadlineChordReverseHistory "Ctrl+r" -GitKeyBindings -TabExpansion -EnableAliasFuzzyGitStatus -EnableAliasFuzzyEdit -EnableAliasFuzzyFasd -EnableAliasFuzzyKillProcess -EnableAliasFuzzyScoop
-	Set-PsFzfOption -AltCCommand $commandOverride
 }

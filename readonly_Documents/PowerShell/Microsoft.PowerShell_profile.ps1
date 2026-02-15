@@ -9,6 +9,7 @@ $startupScripts = @(
   "80-psreadline.ps1"
   "81-fzf.ps1"
   "82-zoxide.ps1"
+  "83-ssh.ps1"
 )
 
 foreach ($script in $startupScripts) {
