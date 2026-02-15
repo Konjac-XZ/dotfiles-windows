@@ -35,7 +35,7 @@ function Set-LocationFuzzyEverything {
     }
 
     # fzf: --no-sort avoids extra sorting work on huge lists ([Arch Manual Pages](https://man.archlinux.org/man/fzf.1.en?utm_source=chatgpt.com))
-    $cmdLine = "`"$es`" -path `"$Directory`" /ad | `"$fzf`" "
+    $cmdLine = "`"$es`" -path `"$Directory`" /ad | `"$fzf`" --scheme path"
     $result = & $env:ComSpec /S /C $cmdLine 2>$null | Select-Object -First 1
 
     if ($result) { Set-Location -LiteralPath $result }
