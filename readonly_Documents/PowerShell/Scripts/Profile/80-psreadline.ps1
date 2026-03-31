@@ -49,10 +49,18 @@ $PSReadLineOptions = @{
   ExtraPromptLineCount = $true
   HistoryNoDuplicates  = $true
   MaximumHistoryCount  = 5000
-  PredictionSource     = "HistoryAndPlugin"
-  PredictionViewStyle  = "ListView"
-  ShowToolTips         = $true
   BellStyle            = "None"
+}
+
+$supportsVT = $false
+if ($Host.UI -and ($Host.UI.PSObject.Properties.Name -contains 'SupportsVirtualTerminal')) {
+  $supportsVT = [bool]$Host.UI.SupportsVirtualTerminal
+}
+
+if ($supportsVT -and -not [Console]::IsOutputRedirected) {
+  $PSReadLineOptions['PredictionSource'] = 'HistoryAndPlugin'
+  $PSReadLineOptions['PredictionViewStyle'] = 'ListView'
+  $PSReadLineOptions['ShowToolTips'] = $true
 }
 
 Set-PSReadLineOption @PSReadLineOptions
