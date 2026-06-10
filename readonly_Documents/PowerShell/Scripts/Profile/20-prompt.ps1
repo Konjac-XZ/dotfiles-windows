@@ -1,1 +1,13 @@
-oh-my-posh init pwsh --config "C:\Program Files\WindowsApps\ohmyposh.cli_29.3.0.0_x64__96v55e8n804z4\themes\onehalf.minimal.omp.json" | Invoke-Expression
+$starship = Get-Command starship -ErrorAction SilentlyContinue
+$starshipExe = $starship.Source
+
+if (-not $starshipExe) {
+  $starshipPath = Join-Path $env:ProgramFiles "starship\bin\starship.exe"
+  if (Test-Path $starshipPath) {
+    $starshipExe = $starshipPath
+  }
+}
+
+if ($starshipExe) {
+  & $starshipExe init powershell | Invoke-Expression
+}

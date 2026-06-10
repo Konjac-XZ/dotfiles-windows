@@ -25,9 +25,10 @@ $Colors = @{
   Emphasis               = $Flavor.Red.Foreground()
   Selection              = $Flavor.Surface0.Background()
 
-  InlinePrediction       = $Flavor.Overlay0.Foreground()
-  ListPrediction         = $Flavor.Mauve.Foreground()
-  ListPredictionSelected = $Flavor.Surface0.Background()
+  InlinePrediction       = "`e[2;38;5;244m"
+  ListPrediction         = "`e[38;5;66m"
+  ListPredictionSelected = "`e[38;2;245;245;245m`e[48;2;58;80;107m"
+  ListPredictionTooltip  = "`e[2;38;5;244m"
 
   Command                = $Flavor.Blue.Foreground()
   Comment                = $Flavor.Overlay0.Foreground()
@@ -46,7 +47,7 @@ $Colors = @{
 $PSReadLineOptions = @{
 
   Color                = $Colors
-  ExtraPromptLineCount = $true
+  ExtraPromptLineCount = 1
   HistoryNoDuplicates  = $true
   MaximumHistoryCount  = 5000
   BellStyle            = "None"
